@@ -1,0 +1,21 @@
+language: python
+python: 3.6
+
+cache:
+  pip: true
+
+stages:
+  - test
+  - moban
+  - name: deploy
+    if: type != pull_request
+
+env:
+  global:
+    - ENCRYPTION_LABEL: "defac9b1fa56"
+    - COMMIT_AUTHOR_EMAIL: "nobody@coala.io"
+
+notifications:
+  email: false
+  webhooks: https://www.travisbuddy.com/
+on_success: never
